@@ -35,7 +35,7 @@ def whoami(cjdns):
 def dumpTable(cjdns,verbose=False,unique_ip=False,nodes=[]):
     if nodes == []: nodes=[]
     rt = []
-    i = 0;
+    i = 1
     while True:
         table = cjdns.NodeStore_dumpTable(i)
         res=table['routingTable']
@@ -61,7 +61,7 @@ def streamRoutingTable(cjdns, delay=10):
     known = []
 
     while True:
-        i = 0
+        i = 1
         while True:
             table = cjdns.NodeStore_dumpTable(i)
             routes = table['routingTable']

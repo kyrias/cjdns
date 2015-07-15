@@ -39,7 +39,7 @@ def pingNode(addr, path, link):
     return False;
 
 
-i = 0;
+i = 1;
 while True:
     table = cjdns.NodeStore_dumpTable(i);
     routes = table['routingTable'];

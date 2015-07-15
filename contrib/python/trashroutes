@@ -41,7 +41,7 @@ def parseRoute(path):
     return out;
 
 
-i = 0;
+i = 1;
 while True:
     table = cjdns.NodeStore_dumpTable(i);
     routes = table['routingTable'];
