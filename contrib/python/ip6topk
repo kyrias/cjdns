@@ -12,12 +12,11 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import sys;
-from cjdnsadmin.cjdnsadmin import connectWithAdminInfo;
+from cjdns import connectWithAdminInfo;
 
 cjdns = connectWithAdminInfo();
 inputDic = {}
 
 for ip in sys.argv[1:]:
-    inputDic['ip'] = ip
-    outputDic = cjdns.NodeStore_getNode(inputDic)
+    outputDic = cjdns.NodeStore_nodeForAddr(ip=ip)
     print ip + ' ---> ' + outputDic['result']['key']

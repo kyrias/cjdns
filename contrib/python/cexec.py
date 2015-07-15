@@ -13,7 +13,7 @@
 
 import sys
 import os
-import cjdnsadmin
+import cjdns
 import json
 import getopt
 import string
@@ -50,11 +50,11 @@ if __name__ == "__main__":
 
   options, remainder = parse(sys.argv[1:])
   transform = lambda s: s
-  connect = lambda : cjdnsadmin.connectWithAdminInfo()
+  connect = lambda : cjdns.connectWithAdminInfo()
 
   for opt, arg in options:
     if opt in ('-c', '--config'):
-      connect = lambda :  cjdnsadmin.connectWithAdminInfo(arg)
+      connect = lambda :  cjdns.connectWithAdminInfo(arg)
     elif opt in ('-h', '--help'):
       usage()
       sys.exit(0)

@@ -14,11 +14,11 @@
 from time import sleep
 
 def anonConnect(ip='127.0.0.1', port=11234):
-    from cjdnsadmin import connect
+    from cjdns import connect
     return connect(ip, int(port), '')
 
 def connect(ip='127.0.0.1', port=11234, password=''):
-    from cjdnsadmin import connectWithAdminInfo
+    from cjdns import connectWithAdminInfo
     return connectWithAdminInfo()
 
 def disconnect(cjdns):

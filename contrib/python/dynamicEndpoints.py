@@ -40,7 +40,7 @@ cjdnsadminmaker.py if that is not the case.
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from cjdnsadmin.cjdnsadmin import connectWithAdminInfo;
+from cjdns import connectWithAdminInfo;
 from cjdnsadmin.publicToIp6 import PublicToIp6_convert;
 from cjdnsadmin.bencode import *
 import sys

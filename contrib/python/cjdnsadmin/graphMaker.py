@@ -30,7 +30,7 @@ def makeGraph():
         parentIP=nodes.popleft()
         resp=cjdns.NodeStore_nodeForAddr(parentIP)
         numLinks=0
-	if 'result' in resp:
+        if 'result' in resp:
             link=resp['result']
             if 'linkCount' in link:
                 numLinks=int(resp['result']['linkCount'])
