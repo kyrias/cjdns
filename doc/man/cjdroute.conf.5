@@ -52,7 +52,7 @@ An array of passwords that may be used to connect (peer) to your node\&.
 A password which can be used to peer with your node\&.
 .RE
 .PP
-\fI"user":\fR "..."
+\fI"peerName":\fR "..."
 .RS 4
 An optional human-readable string that identifies what password a peer is using
 on the admin interface\&. If omitted, the password will be identified by its
@@ -64,9 +64,9 @@ Example:
 "authorizedPasswords":
 .br
 [
-    { "password": "AnExamplePassword", "user": "Bob" },
-    { "password": "YetAnotherExample", "user": "Alice" },
-    { "password": "j3fus4r3gkhv80xdz1yqc0qvn1p91hr", "user": "Eve" }
+    { "password": "AnExamplePassword", "peerName": "Bob" },
+    { "password": "YetAnotherExample", "peerName": "Alice" },
+    { "password": "j3fus4r3gkhv80xdz1yqc0qvn1p91hr", "peerName": "Eve" }
 .br
 ]
 .RE
@@ -130,7 +130,8 @@ UDPInterface Example:
 .br
 {
     "password": "password From Your Peer's authorizedPasswords",
-    "publicKey": "Your Peer's publicKey\&.k"
+    "publicKey": "Your Peer's publicKey\&.k",
+    "peerName": "peerA"
 .br
 },
 .br
@@ -138,7 +139,8 @@ UDPInterface Example:
 .br
 {
     "password": "Correct Horse Battery Staple",
-    "publicKey": "Other Peer's publicKey\&.k"
+    "publicKey": "Other Peer's publicKey\&.k",
+    "peerName": "peerB"
 .br
 }
 .RE
