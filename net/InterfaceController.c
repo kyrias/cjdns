@@ -574,7 +574,7 @@ static Iface_DEFUN handleBeacon(struct Message* msg, struct InterfaceController_
     Allocator_onFree(epAlloc, closeInterface, ep);
 
     ep->peerLink = PeerLink_new(ic->eventBase, epAlloc);
-    ep->caSession = CryptoAuth_newSession(ic->ca, epAlloc, beacon.publicKey, false, "outer");
+    ep->caSession = CryptoAuth_newSession(ic->ca, epAlloc, beacon.publicKey, false, "beacon");
     CryptoAuth_setAuth(beaconPass, NULL, ep->caSession);
 
     ep->switchIf.send = sendFromSwitch;
