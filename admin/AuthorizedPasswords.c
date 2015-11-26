@@ -38,7 +38,7 @@ static void add(Dict* args, void* vcontext, String* txid, struct Allocator* allo
     struct Context* context = Identity_check((struct Context*) vcontext);
 
     String* passwd = Dict_getString(args, String_CONST("password"));
-    String* user = Dict_getString(args, String_CONST("user"));
+    String* login = Dict_getString(args, String_CONST("login"));
     String* ipv6 = Dict_getString(args, String_CONST("ipv6"));
     String* peerName = Dict_getString(args, String_CONST("peerName"));
 
@@ -53,7 +53,7 @@ static void add(Dict* args, void* vcontext, String* txid, struct Allocator* allo
         ipv6Arg = ipv6Bytes;
     }
 
-    int32_t ret = CryptoAuth_addUser_ipv6(passwd, user, peerName, ipv6Arg, context->ca);
+    int32_t ret = CryptoAuth_addUser_ipv6(passwd, login, peerName, ipv6Arg, context->ca);
 
     switch (ret) {
         case 0:
@@ -70,9 +70,9 @@ static void add(Dict* args, void* vcontext, String* txid, struct Allocator* allo
 static void remove(Dict* args, void* vcontext, String* txid, struct Allocator* requestAlloc)
 {
     struct Context* context = Identity_check((struct Context*) vcontext);
-    String* user = Dict_getString(args, String_CONST("user"));
+    String* login = Dict_getString(args, String_CONST("login"));
 
-    int32_t ret = CryptoAuth_removeUsers(context->ca, user);
+    int32_t ret = CryptoAuth_removeUsers(context->ca, login);
     if (ret) {
         sendResponse(String_CONST("none"), context->admin, txid, requestAlloc);
     } else {
@@ -112,7 +112,7 @@ void AuthorizedPasswords_init(struct Admin* admin,
         ((struct Admin_FunctionArg[]){
             { .name = "password", .required = 1, .type = "String" },
             { .name = "ipv6", .required = 0, .type = "String" },
-            { .name = "user", .required = 0, .type = "String" },
+            { .name = "login", .required = 0, .type = "String" },
             { .name = "peerName", .required = 0, .type = "String" }
         }), admin);
     Admin_registerFunction("AuthorizedPasswords_remove", remove, context, true,

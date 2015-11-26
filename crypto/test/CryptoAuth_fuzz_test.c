@@ -285,7 +285,7 @@ static void cycle(uint8_t randSeed[64],
 
     if (maybe(ctx, 2)) {
         CryptoAuth_addUser_ipv6(String_CONST("pass"),
-                                String_CONST("user"),
+                                String_CONST("login"),
                                 String_CONST("peer"),
                                 NULL,
                                 ctx->nodeB.ca);
@@ -293,17 +293,17 @@ static void cycle(uint8_t randSeed[64],
         uint8_t nodeAAddress[16];
         AddressCalc_addressForPublicKey(nodeAAddress, ctx->nodeA.ca->publicKey);
         CryptoAuth_addUser_ipv6(String_CONST("pass"),
-                                String_CONST("user"),
+                                String_CONST("login"),
                                 String_CONST("peer"),
                                 nodeAAddress,
                                 ctx->nodeB.ca);
     }
     if (maybe(ctx, 3)) {
         // 33% chance of no authentication
-        CryptoAuth_removeUsers(ctx->nodeB.ca, String_CONST("user"));
+        CryptoAuth_removeUsers(ctx->nodeB.ca, String_CONST("login"));
     } else if (maybe(ctx, 2)) {
         // 33% chance of authType 2
-        CryptoAuth_setAuth(String_CONST("pass"), String_CONST("user"), ctx->nodeA.session);
+        CryptoAuth_setAuth(String_CONST("pass"), String_CONST("login"), ctx->nodeA.session);
     } else {
         // 33% chance of authType 1
         CryptoAuth_setAuth(String_CONST("pass"), NULL, ctx->nodeA.session);

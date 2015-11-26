@@ -260,7 +260,7 @@ static void linkNodes(struct Context* ctx, struct NodeContext* client, struct No
                    clientStr,
                    ctx->rpcAlloc);
     Dict_putString(addPasswordArgs,
-                   String_new("user", ctx->rpcAlloc),
+                   String_new("login", ctx->rpcAlloc),
                    clientStr,
                    ctx->rpcAlloc);
     struct RPCCall* addPasswordCall = pushCall(ctx);
