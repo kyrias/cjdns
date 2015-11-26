@@ -856,12 +856,12 @@ int InterfaceController_bootstrapPeer(struct InterfaceController* ifc,
     Allocator_onFree(epAlloc, closeInterface, ep);
     Allocator_onFree(alloc, freeAlloc, epAlloc);
 
-    ep->peerLink = PeerLink_new(ic->eventBase, epAlloc);
-    ep->caSession = CryptoAuth_newSession(ic->ca, epAlloc, herPublicKey, false, "outer");
-    CryptoAuth_setAuth(password, login, ep->caSession);
-    if (peerName) {
-        ep->caSession->peerName = String_clone(peerName, epAlloc);
+    if (!peerName) {
+        peerName = String_CONST("outer");
     }
+    ep->peerLink = PeerLink_new(ic->eventBase, epAlloc);
+    ep->caSession = CryptoAuth_newSession(ic->ca, epAlloc, herPublicKey, false, peerName);
+    CryptoAuth_setAuth(password, login, ep->caSession);
 
     ep->switchIf.send = sendFromSwitch;
 
